@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-    测试2
+    Linux部署DVWA
     
 </title>
 <noscript>开启Javascript是必要的</noscript>
@@ -237,7 +237,7 @@
         </div>
         <div id="page-name-mask">
             <div id="page-name">
-                <a id="page-name-text" onclick="acrylic.toTop()">测试2</a>
+                <a id="page-name-text" onclick="acrylic.toTop()">Linux部署DVWA</a>
             </div>
         </div>
         <div id="menus">
@@ -363,7 +363,7 @@
 </nav>
     
         <div class="coverdiv loaded" id="coverdiv">
-    <img id="post-cover" src="" alt="cover">
+    <img id="post-cover" src="/pic/文件名/图片名" alt="cover">
 </div>
 <div id="post-info">
     <div id="post-firstinfo">
@@ -377,16 +377,36 @@
             <div class="tag_share">
                 <div class="post-meta__tag-list">
                     
+                        <a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0%E6%9C%AC/">
+                            <span class="tags-punctuation">#</span>
+                            <span class="tags-name">笔记本</span>
+                        </a>
+                    
+                        <a class="post-meta__tags" href="/tags/%E5%8D%9A%E5%AE%A2/">
+                            <span class="tags-punctuation">#</span>
+                            <span class="tags-name">博客</span>
+                        </a>
+                    
+                        <a class="post-meta__tags" href="/tags/%E6%93%8D%E4%BD%9C/">
+                            <span class="tags-punctuation">#</span>
+                            <span class="tags-name">操作</span>
+                        </a>
+                    
+                        <a class="post-meta__tags" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">
+                            <span class="tags-punctuation">#</span>
+                            <span class="tags-name">网络安全</span>
+                        </a>
+                    
                 </div>
             </div>
         </div>
     </div>
-    <h1 class="post-title">测试2</h1>
+    <h1 class="post-title">Linux部署DVWA</h1>
     <div id="post-meta">
         <div class="meta-secondline">
             <span class="post-meta-date">
                 <i class="fa-fw post-meta-icon fas fa-calendar"></i>
-                <time datetime="2023-03-05T21:51:34+08:00"></time>
+                <time datetime="2023-05-18T21:24:41+08:00"></time>
             </span>
             <span class="post-meta-position" title="作者IP归属地为">
                 <i class="fas fa-location-dot post-meta-icon"></i>
@@ -395,11 +415,11 @@
             
                 <span class="post-meta-wordcount">
                     <i class="fas fa-file-word fa-fw post-meta-icon" title="字数"></i>
-                    <span class="word-count">0</span>
+                    <span class="word-count">1.1k</span>
                 </span>
                 <span class="post-meta-time">
                     <i class="fas fa-clock post-meta-icon" title="阅读耗时"></i>
-                    <span>1</span>
+                    <span>4</span>
                 </span>
             
             <span class="post-meta-pv" data-flag-title="热度">
@@ -431,7 +451,125 @@
                 <main class="layout" id="content-inner">
     <div id="post">
     <article class="post-content" id="article-container">
-        
+        <h1 id="相关知识点"><a href="#相关知识点" class="headerlink" title="[相关知识点]"></a>[相关知识点]</h1><h2 id="◎Linux-Apache-以Kali-Linux-Apache2服务为例"><a href="#◎Linux-Apache-以Kali-Linux-Apache2服务为例" class="headerlink" title="◎Linux Apache (以Kali Linux Apache2服务为例)"></a>◎Linux Apache (以Kali Linux Apache2服务为例)</h2><p>​		说明: Kali Linux 默认已安装apache服务、MySQL 数据库服务和PHP环境，如没有安装或需更新， 可执行如下命令: </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get -y install apache2 mysql-server php php-mysqli php-gd libapache2-mod-php</span><br></pre></td></tr></table></figure>
+
+<p>​		Kali默认已安装php的大部分模块，唯独php-gd模块未安装，需要安装</p>
+<p>​		安装完毕后，apache配置文件的结构是这样的</p>
+<p>​		 &#x2F;etc&#x2F;apache2&#x2F;</p>
+<p>​				|-apache2. conf</p>
+<p>​				|-ports . conf</p>
+<p>​				|-mods -enabled</p>
+<p>​				|-		  |-*.load</p>
+<p>​								L *. conf</p>
+<p>​				|-conf-enabled</p>
+<p>​				|-			L_ *.conf</p>
+<p>​				Lsites - enabled</p>
+<p>​								L_ _ * . conf</p>
+<p>a)编辑**&#x2F;etc&#x2F; apache2&#x2F; apache2. conf**，这是apache2服务器的主配置文件；<br>b) <strong>mods -enabled文件夹</strong>存放mods-available中各模块的软链接，定义了可用的功能模块，如PHP模块；<br>c) <strong>sites-enabled文件夹</strong>存放sites-available中各虚拟站点的软链接,定义了可用的虚拟站点配置，如需设置一机多站，应在该文件夹中创建conf配置文件，并将软链接放到sites-enable；<br>d)开启Apache2服务，参考命令<code>service apache2 start</code>；<br>e)根据需要，编辑Apache的配置文件，如网站主目录等，Kali默认的网<br>站主目录为&#x2F;var&#x2F;www&#x2F;html , 在此目录中, 添加一个测试的PHP网页， 运行结果如下</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps11.png" alt="wps11"></p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps12.png" alt="wps12"></p>
+<h2 id="◎Kali-Linux部署-DVWA-网站"><a href="#◎Kali-Linux部署-DVWA-网站" class="headerlink" title="◎Kali Linux部署 DVWA 网站"></a>◎Kali Linux部署 DVWA 网站</h2><h4 id="1-将-DVWA-master-zip-解压至-x2F-var-x2F-www-x2F-html文件夹"><a href="#1-将-DVWA-master-zip-解压至-x2F-var-x2F-www-x2F-html文件夹" class="headerlink" title="1.将 DVWA- master. zip 解压至 &#x2F;var&#x2F;www&#x2F;html文件夹"></a>1.将 DVWA- master. zip 解压至 &#x2F;var&#x2F;www&#x2F;html文件夹</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /media/sf_share/网站代码/DVWA-master.zip /var/www/html</span><br><span class="line">cd /var/www/html/</span><br><span class="line">sudo chmod 777 DVWA-master. Zip</span><br><span class="line">sudo unzip DVWA-master. zip</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-启动mysql服务-并创建数据库"><a href="#2-启动mysql服务-并创建数据库" class="headerlink" title="2. 启动mysql服务, 并创建数据库"></a>2. 启动mysql服务, 并创建数据库</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql start</span><br><span class="line">mysql -u root -p</span><br><span class="line">create database dvwa ;</span><br><span class="line">grant all on dvwa.* to dvwa@localhost identified by &#x27;123456&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps13.png" alt="wps13"></p>
+<h4 id="3-修改网站配置"><a href="#3-修改网站配置" class="headerlink" title="3. 修改网站配置"></a>3. 修改网站配置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /var/www/html/DVWA master/config/config.inc.php.dist /var/www/html/DVWA-master/config/config.inc.php</span><br></pre></td></tr></table></figure>
+
+<p>编辑configinc.inc.php文件，将以下内容修改成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$_DVWA[ ‘db_user’ ] = ‘dvwa’;</span><br><span class="line">$_DVWA[ ‘db_password’ ] = ‘123456’;</span><br><span class="line">$_DVWA[ ‘db_database’ ] = ‘dvwa’;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps14.png" alt="wps14"></p>
+<h4 id="4-其他配置"><a href="#4-其他配置" class="headerlink" title="4. 其他配置"></a>4. 其他配置</h4><p>设置.&#x2F;hackable&#x2F;uploads&#x2F;文件夹可写权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 777 /var/www/html/DVWA-master/hackable/uploads</span><br></pre></td></tr></table></figure>
+
+<p>设置.&#x2F;external&#x2F; phpids&#x2F;0.6&#x2F;1ib&#x2F;IDS&#x2F;tmp&#x2F;phpids_log. txt文件可写权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 777 /var/www/html/DVWA-master/external/phpids/0.6/lib/IDS/tmp/phpids_log.txt</span><br></pre></td></tr></table></figure>
+
+<p>设置. &#x2F;config文件夹可写权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/var/www/html/DVWA-master/config</span><br></pre></td></tr></table></figure>
+
+<p>设置php. ini中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">allow_url_include=on</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-初始化网站"><a href="#5-初始化网站" class="headerlink" title="5.初始化网站"></a>5.初始化网站</h4><p>打开浏览器，输入地址</p>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/DVWA-master/setup%E3%80%82php">http://127.0.0.1/DVWA-master/setup.php</a></p>
+<p>如图中方框所见，就可以下一步初始化设置</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps15.png" alt="wps15"></p>
+<p>浏览到页面下方，单击“Create&#x2F;Reset Database”</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps16.png" alt="wps16"></p>
+<p>稍等片刻，网站自动跳转到登陆页面</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps17.png" alt="wps17"></p>
+<p>输入用户名admin 密码password</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps18.png" alt="wps18"></p>
+<h1 id="实训工具"><a href="#实训工具" class="headerlink" title="[实训工具]"></a>[实训工具]</h1><p>GNS3（Ethernet Switch）；</p>
+<p>VirtualBox（Windows 7、Kali Linux）</p>
+<h1 id="实训内容"><a href="#实训内容" class="headerlink" title="[实训内容]"></a>[实训内容]</h1><h2 id="1-网络拓扑结构："><a href="#1-网络拓扑结构：" class="headerlink" title="1.  网络拓扑结构："></a>1.  网络拓扑结构：</h2><p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps19.jpg" alt="wps19"></p>
+<h2 id="2-实训要求"><a href="#2-实训要求" class="headerlink" title="2.  实训要求"></a>2.  实训要求</h2><h3 id="1）完成DVWA网站的部署"><a href="#1）完成DVWA网站的部署" class="headerlink" title="1）完成DVWA网站的部署"></a>1）完成DVWA网站的部署</h3><p>切换网络模式为NAT</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps21.jpg" alt="wps21"></p>
+<p>使用<code>apt-get install php-gd</code>安装php-gd</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps23.jpg" alt="wps23"></p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps24.jpg" alt="wps24"></p>
+<p>查看</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps25.jpg" alt="wps25"></p>
+<p>将网络模式改回通用驱动</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps27.jpg" alt="wps27"></p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps28.jpg" alt="wps28"></p>
+<p>使用<code>service apache2 start</code>命令启动apache服务</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps30.jpg" alt="wps30"></p>
+<p>打开默认网站，在浏览器输入127.0.0.1</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps32.jpg" alt="wps32"></p>
+<h4 id="1-事先将DVWA放入media-x2F-sf-share-x2F-WebCode"><a href="#1-事先将DVWA放入media-x2F-sf-share-x2F-WebCode" class="headerlink" title="1.事先将DVWA放入media&#x2F;sf_share&#x2F;WebCode"></a>1.事先将DVWA放入media&#x2F;sf_share&#x2F;WebCode</h4><h4 id="2-将DVWA复制到网站主目录"><a href="#2-将DVWA复制到网站主目录" class="headerlink" title="2.将DVWA复制到网站主目录"></a>2.将DVWA复制到网站主目录</h4><p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps35.jpg" alt="wps35"></p>
+<p>使用<code>unzip DVWA-master.zip</code>命令将DVWA-master压缩包解压</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps37.jpg" alt="wps37"></p>
+<p><code>ls -l</code>查看</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps38.jpg" alt="wps38"></p>
+<p>输入<code>127.0.0.1/DVWA.master</code>，发现错误，说明未配置好</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps40.jpg" alt="wps40"></p>
+<p>根据错误提示需要配置config.inc.php</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps37.jpg" alt="wps37"></p>
+<p>查看MySQL密码</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps44.jpg" alt="wps44"></p>
+<p>使用命令<code>service mysql start</code>开启MySQL服务，</p>
+<p>使用命令<code>mysql -u root -p</code>登陆MySQl；</p>
+<p>使用命令<code>create database dvwa</code>创建dvwa数据库</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps47.jpg" alt="wps47"></p>
+<p>MariaDB数据库不允许应用程序以root身份访问，因此要授权dvwa用户访问dvwa数据库<br>grant all on dvwa.*表示对dvwa数据库授权；<br>dvwa@localhost表示本地账户dvwa；identified by ‘123456’表示登陆密码为123456<br>Flush privileges；刷新权限</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps50.jpg" alt="wps50"></p>
+<p>编辑config.inc.php</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps52.jpg" alt="wps52"></p>
+<p>更改为$_DVWA[ ‘db_user’ ] &#x3D; ‘dvwa’;<br>            $_DVWA[ ‘db_password’ ] &#x3D; ‘123456’;</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps54.jpg" alt="wps54"></p>
+<p>红色部分为不满足网站运行要求的，还需要更改</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps56.jpg" alt="wps56"></p>
+<p>使用chmod777更改目录的写入权限</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps58.jpg" alt="wps58"></p>
+<p>还需要设置allow_url_include和reCAPTCHA.key</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps59.jpg" alt="wps59"></p>
+<p>查找php.ini文件</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps61.jpg" alt="wps61"><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps62.jpg" alt="wps62"></p>
+<p>更改856行的allow_url_include为On</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps64.jpg" alt="wps64"></p>
+<p>重启apache服务</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps66.jpg" alt="wps66"></p>
+<p>刷新网页；点击Create&#x2F;Reset Database，等待刷出登陆界面</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps68.jpg" alt="wps68"></p>
+<p>使用用户名admin，密码password登陆</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps70.jpg" alt="wps70"><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps71.jpg" alt="wps71"></p>
+<p>设置insecured CAPTCHA</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps72.jpg" alt="wps72"></p>
+<p>编辑config.inc.php</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps74.jpg" alt="wps74"></p>
+<p>添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$_DVWA[ &#x27;recaptcha_public_key&#x27; ]=&#x27;6LdK7xITAAzzAAJQTfL7fu6I-0aPl8KHHieAT_yJg&#x27;; </span><br><span class="line">$_DVWA[&#x27;recaptcha_private_key&#x27;]=&#x27;6LdK7xITAzzAAL_uw9YXVUOPoIHPZLfw2K1n5NVQ&#x27;; </span><br></pre></td></tr></table></figure>
+
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps76.jpg" alt="wps76"></p>
+<p>刷新网站，设置完成</p>
+<p><img src="/pic/Linux%E9%83%A8%E7%BD%B2DVWA/wps78.jpg" alt="wps78"></p>
+<p>注：<br>如需完成insecured CAPTCHA的实训，需要相关的公钥和密钥，并在config.inc.php中设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$_DVWA[ &#x27;recaptcha_public_key&#x27; ]=&#x27;6LdK7xITAAzzAAJQTfL7fu6I-0aPl8KHHieAT_yJg&#x27;; </span><br><span class="line">$_DVWA[&#x27;recaptcha_private_key&#x27;]=&#x27;6LdK7xITAzzAAL_uw9YXVUOPoIHPZLfw2K1n5NVQ&#x27;; </span><br></pre></td></tr></table></figure>
+
+
     </article>
     <div class="post-tools" id="post-tools">
         <div class="post-tools-left">
@@ -443,18 +581,18 @@
         </div>
         <div class="share-main">
             <div class="share-main-all">
-                <div id="qrcode" title="http://ryanwuuu.com/2023/03/05/%E6%B5%8B%E8%AF%952/">
+                <div id="qrcode" title="http://ryanwuuu.com/2023/05/18/Linux%E9%83%A8%E7%BD%B2DVWA/">
                 </div>
                 <div class="reward-dec">使用手机访问这篇文章</div>
             </div>
         </div>
         <script type="text/javascript">
-            new QRCode(document.getElementById("qrcode"), "http://ryanwuuu.com/2023/03/05/%E6%B5%8B%E8%AF%952/");
+            new QRCode(document.getElementById("qrcode"), "http://ryanwuuu.com/2023/05/18/Linux%E9%83%A8%E7%BD%B2DVWA/");
         </script>
     </div>
 </div>
             <div class="share-link weibo"><a class="share-button" target="_blank"
-    href="https://service.weibo.com/share/share.php?title=测试2&amp;url=http://ryanwuuu.com/2023/03/05/%E6%B5%8B%E8%AF%952/&amp;pic="
+    href="https://service.weibo.com/share/share.php?title=Linux部署DVWA&amp;url=http://ryanwuuu.com/2023/05/18/Linux%E9%83%A8%E7%BD%B2DVWA/&amp;pic=/pic/文件名/图片名"
     title="分享到微博" rel="noopener external nofollow noreferrer noopener">
     <i class="fab fa-weibo" style="font-size:22px"></i>
 </a>
@@ -501,12 +639,12 @@
     <div class="post-copyright__author">
         <a class="post-copyright__original" title="该文章为文章，注意版权协议"></a>
         <a class="post-copyright-title" href="#">
-            <span>测试2</span>
+            <span>Linux部署DVWA</span>
         </a>
     </div>
     <div class="post-copyright__type">
         <span class="post-copyright-info" id="post-copyright-url">
-            <a href="/2023/03/05/%E6%B5%8B%E8%AF%952/">http://ryanwuuu.com/2023/03/05/%E6%B5%8B%E8%AF%952/</a>
+            <a href="/2023/05/18/Linux%E9%83%A8%E7%BD%B2DVWA/">http://ryanwuuu.com/2023/05/18/Linux%E9%83%A8%E7%BD%B2DVWA/</a>
         </span>
         <button class="post-copyright-copybtn" onclick="acrylic.copyPageUrl()">
             <i class="fas fa-paste copy-btn"></i>
@@ -518,22 +656,17 @@
 </div>
     <nav class="pagination-post" id="pagination">
     
-        <div class="prev-post pull-left">
-            <a href="/2023/05/18/Linux%E9%83%A8%E7%BD%B2DVWA/">
-                <div class="pagination-info">
-                    <div class="label">上一篇</div>
-                    <div class="prev_info">Linux部署DVWA</div>
-                </div>
-            </a>
-        </div>
-        <div class="next-post pull-right">
-            <a href="/2023/03/05/%E6%B5%8B%E8%AF%951/">
-                <div class="pagination-info">
-                    <div class="label">下一篇</div>
-                    <div class="next_info">测试1</div>
-                </div>
-            </a>
-        </div>
+        
+            <div class="next-post pull-full">
+                <a href="/2023/03/05/%E6%B5%8B%E8%AF%952/">
+                    <div class="pagination-info">
+                        <div class="label">下一篇</div>
+                        <div class="next_info">测试2</div>
+                    </div>
+                </a>
+            </div>
+                
+        
     
 </nav>
         
@@ -584,7 +717,7 @@
             <span>文章目录</span>
         </div>
         <div class="toc-content">
-            
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">[相关知识点]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%97%8ELinux-Apache-%E4%BB%A5Kali-Linux-Apache2%E6%9C%8D%E5%8A%A1%E4%B8%BA%E4%BE%8B"><span class="toc-text">◎Linux Apache (以Kali Linux Apache2服务为例)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%97%8EKali-Linux%E9%83%A8%E7%BD%B2-DVWA-%E7%BD%91%E7%AB%99"><span class="toc-text">◎Kali Linux部署 DVWA 网站</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B0%86-DVWA-master-zip-%E8%A7%A3%E5%8E%8B%E8%87%B3-x2F-var-x2F-www-x2F-html%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">1.将 DVWA- master. zip 解压至 &#x2F;var&#x2F;www&#x2F;html文件夹</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%90%AF%E5%8A%A8mysql%E6%9C%8D%E5%8A%A1-%E5%B9%B6%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">2. 启动mysql服务, 并创建数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BF%AE%E6%94%B9%E7%BD%91%E7%AB%99%E9%85%8D%E7%BD%AE"><span class="toc-text">3. 修改网站配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE"><span class="toc-text">4. 其他配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%88%9D%E5%A7%8B%E5%8C%96%E7%BD%91%E7%AB%99"><span class="toc-text">5.初始化网站</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E8%AE%AD%E5%B7%A5%E5%85%B7"><span class="toc-text">[实训工具]</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E8%AE%AD%E5%86%85%E5%AE%B9"><span class="toc-text">[实训内容]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="toc-text">1.  网络拓扑结构：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9E%E8%AE%AD%E8%A6%81%E6%B1%82"><span class="toc-text">2.  实训要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%BC%89%E5%AE%8C%E6%88%90DVWA%E7%BD%91%E7%AB%99%E7%9A%84%E9%83%A8%E7%BD%B2"><span class="toc-text">1）完成DVWA网站的部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BA%8B%E5%85%88%E5%B0%86DVWA%E6%94%BE%E5%85%A5media-x2F-sf-share-x2F-WebCode"><span class="toc-text">1.事先将DVWA放入media&#x2F;sf_share&#x2F;WebCode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%B0%86DVWA%E5%A4%8D%E5%88%B6%E5%88%B0%E7%BD%91%E7%AB%99%E4%B8%BB%E7%9B%AE%E5%BD%95"><span class="toc-text">2.将DVWA复制到网站主目录</span></a></li></ol></li></ol></li></ol></li></ol>
         </div>
     </div>
     <div class="card-widget card-recent-post">
