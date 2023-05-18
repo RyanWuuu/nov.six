@@ -457,34 +457,34 @@
 <p>●在基于DEB的系统</p>
 <p>通常地，在基于DEB的操作系统中(如ubuntu、debian、Kali ),密码和身份认证相关的	配置文件被存储在&#x2F;etc&#x2F;pam.d&#x2F;目录中。</p>
 <h3 id="➢设置最小密码长度"><a href="#➢设置最小密码长度" class="headerlink" title="➢设置最小密码长度"></a>➢设置最小密码长度</h3><p>1)编辑&#x2F;etc&#x2F;pam.d&#x2F;common-password文件;</p>
-<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps79.png" alt="wps79"></p>
+<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps79.jpg" alt="wps79"></p>
 <p>2)找到下面这行:</p>
-<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps80.png" alt="wps80"></p>
+<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps80.jpg" alt="wps80"></p>
 <p>3)在末尾添加额外的文字:minlen&#x3D;8。在这里设置的最小密码长度为8。</p>
-<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps81.png" alt="wps81"></p>
+<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps81.jpg" alt="wps81"></p>
 <p>保存并关闭该文件。这样一来,用户现在不能设置小于8个字符的密码。</p>
 <h3 id="➢设置密码复杂度"><a href="#➢设置密码复杂度" class="headerlink" title="➢设置密码复杂度"></a>➢设置密码复杂度</h3><p>此设置会强制要求密码中应该包含多少类型,比如大写字母、小写字母和其他字符。</p>
 <p>1)用下面命令安装密码质量检测库:</p>
 <p><code>apt-get install libpam-pwquality</code>或<code>apt-get install libpam-cracklib</code></p>
 <p>2)编辑&#x2F;etc&#x2F;pam.d&#x2F;common-password文件:</p>
-<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps82.png" alt="wps82"></p>
+<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps82.jpg" alt="wps82"></p>
 <p>3)设置密码中至少有一个大写字母,则在下面这行的末尾添加文字<code>ucredit=-1</code>。</p>
 <p>4)设置密码中至少有一个小写字母,则在下面这行的末尾添加文字<code>lcredit=-1</code>。</p>
 <p>5)设置密码中至少有一个数字,则在下面这行的末尾添加文字<code>dcredit=-1</code>。</p>
 <p>6)设置密码中至少有一个特殊字符,则在下面这行的末尾 添加文字<code>ocredit=-1</code>。</p>
 <p>7)设置允许输入三次,则在下面这行的末尾添加文字<code>retry=3</code>。</p>
 <p>8)设置新密码与旧密码不同的个数为三个，则在下面这行的末尾添加文字<code>difok=3</code>。</p>
-<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps83.png" alt="wps83"></p>
+<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps83.jpg" alt="wps83"></p>
 <p>9)还可以设置密码中至少含有两种字符的组合，则在下面这行的末尾添加文字<code>minclass=2</code></p>
 <h3 id="➢设置密码有效期"><a href="#➢设置密码有效期" class="headerlink" title="➢设置密码有效期"></a>➢设置密码有效期</h3><p>1)编辑&#x2F;etc&#x2F;login.defs</p>
 <p>2)密码被使用的最长天数，应设置<code>PASS_MAX_DAYS 99999</code></p>
 <p>3)密码更改允许的最小间隔天数,应设置<code>PASS_MIN_DAYS 0</code></p>
 <p>4)密码到期之前发出警告的天数,应设置<code>PASS_WARN_AGE 7</code></p>
-<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps84.png" alt="wps84"></p>
+<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps84.jpg" alt="wps84"></p>
 <p>请注意,这些设置将会在新创建的用户中有效。</p>
 <p>为已存在的用户设置修改密码有效期,你必须要运行下面的命令:</p>
 <p><code>chage</code></p>
-<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps85.png" alt="wps85"></p>
+<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps85.jpg" alt="wps85"></p>
 <p>设置修改密码的最大间隔天数,执行：</p>
 <p><code>$ sudo chage -M &lt;days&gt; &lt;username&gt;</code></p>
 <p>设置修改密码的最小间隔天数,执行：</p>
@@ -493,11 +493,11 @@
 <p><code>$ sudo chage -W &lt;days&gt; &lt;username&gt;</code></p>
 <p>显示已存在用户的密码,执行：</p>
 <p><code>$ sudo chage -l scst</code></p>
-<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps86.png" alt="wps86"></p>
+<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps86.jpg" alt="wps86"></p>
 <p>[例]</p>
 <p>设置用户scst 的密码期限是2020年7月21。并且修改密码的最小间隔时间为5天,	最大间隔时间为90天。用户账号将会在10天后被自动锁定, 而且在到期之前的10天	前显示警告信息。</p>
 <p><code>$ sudo chage -E 2020-07-21 -m 5 -M 90 -I 10 -W 10 scst</code></p>
-<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps87.png" alt="wps87"></p>
+<p><img src="/pic/Linux%E5%8A%A0%E5%9B%BA/wps87.jpg" alt="wps87"></p>
 
     </article>
     <div class="post-tools" id="post-tools">
